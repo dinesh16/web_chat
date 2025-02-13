@@ -1,0 +1,14 @@
+<h1>Hello <%= @user.name %>,</h1>
+
+<p>Here is your weekly message summary:</p>
+
+<ul>
+  <li>Messages sent last week: <%= @messages_sent %></li>
+  <li>Messages received last week: <%= @messages_received %></li>
+  <li>Total messages received since your last sent message: <%= @total_received_since_last_sent %></li>
+</ul>
+
+<p>Keep the conversations going!</p>
+
+<p>Best,</p>
+<p>Fonix Team</p>

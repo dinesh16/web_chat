@@ -27,5 +27,34 @@
 #       "yes": yup
 #       enabled: "ON"
 
+
 en:
   hello: "Hello world"
+  app_name: "Web Chat"
+  channels:
+    title: "All Channels"
+    titles:
+      new: "New Channel"
+    notices:
+      created: "Channel created"
+      updated: "Channel updated"
+      deleted: "Channel deleted"
+      joined: "You have joined a new Channel"
+    alerts:
+      delete: "Unable to delete Channel"
+      empty: "No Channels available"
+    actions:
+      new: "New Channel"
+    fields:
+      name: "Name"
+      members: "Members"
+    placeholders:
+      new_message: "New message"
+  actions:
+    logout: "Logout"
+    send: "Send"
+    save: "Save"
+    back: "Back"
+    view: "View"
+
+

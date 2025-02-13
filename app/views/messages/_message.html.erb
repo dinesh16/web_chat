@@ -1,0 +1,15 @@
+<%= turbo_stream.append "messages" do %>
+  <article class="message">
+
+    <div class="small">
+      <i>
+      <span><%= message.channel_user.user.name %></span>
+      <span><%= message.created_at.strftime("%d %b %Y, %I:%M %p") %></span>
+      </i>
+    </div>
+    <div class="">
+      <%= message.content %>
+    </div>
+    <hr/>
+  </article>
+<% end %>

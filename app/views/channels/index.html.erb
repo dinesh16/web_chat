@@ -1,0 +1,12 @@
+
+
+<h2>Channels </h2>
+
+<% if @channels.present? %>
+  <% @channels.each do |channel| %>
+    <h3>Channel Name: <%= channel.name %></h3>
+      <h3><%= button_to 'Join', channel_join_path(channel), method: :post, data: { confirm: "Are you sure?" }, class: "btn btn--success" unless channel.users.include? current_user %></h3>
+  <% end %>
+<% else %>
+  <h3>empty</h3>
+<% end %>

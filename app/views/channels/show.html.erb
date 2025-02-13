@@ -1,0 +1,21 @@
+
+<% if current_user && current_user.channels.present? %>
+	<span><%= button_to 'Back', root_path, method: :get  %> </span>
+	<span class="right"><%= button_to 'Logout', destroy_user_session_path, method: :delete %></span>
+
+  <h1><%= @channel.name%></h1>
+
+  <section class="messages">
+    <%= turbo_stream_from "channel_#{@channel.id}" %>
+    <%= turbo_frame_tag "messages" do %>
+      <%= render @channel.messages %>
+    <% end %>
+  </section>
+
+  <%= turbo_frame_tag "new_message" do %>
+    <%= render "messages/form", message: @new_message, channel: @channel %>
+  <% end %>
+
+
+
+<% end %>

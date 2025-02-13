@@ -1,0 +1,6 @@
+<%= form_for message, url: channel_messages_path(channel), method: :post, html: { class: "new-message" } do |f| %>
+  <div class="field">
+    <%= f.text_area :content %>
+  </div>
+  <%= f.submit 'Send', class: "btn" %>
+<% end %>

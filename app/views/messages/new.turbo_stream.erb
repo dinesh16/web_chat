@@ -1,0 +1,4 @@
+
+<%= turbo_stream.replace "new_message" do %>
+  <%= render "form", message: @new_message, channel: @channel %>
+<% end %>
