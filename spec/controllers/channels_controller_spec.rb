@@ -12,7 +12,7 @@ RSpec.describe ChannelsController, type: :controller do
     it 'assigns @channels and renders the index template' do
       channel1 = create(:channel, name: 'Channel A')
       channel2 = create(:channel, name: 'Channel B')
-      # get :index
+      get :index
       # expect(assigns(:channels)).to eq([channel1, channel2])
       # expect(response).to render_template(:index)
     end

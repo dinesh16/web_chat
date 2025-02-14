@@ -1,6 +1,4 @@
-<h1>Fonix Webchat</h1>
-
-<%= turbo_stream_from current_user, "chatroom_hatroom" %>
+<%= turbo_stream_from current_user %>
 
 <% if current_user %>
   <span class=""><%= button_to 'Logout', destroy_user_session_path, method: :delete %></span>
@@ -12,9 +10,8 @@
 
 <div class=''>
   <section>
-    <h2>Channel: <%= @channel.name %></h2>
     <% if @channel.users.include? current_user %>
-      <h3><%= link_to t('actions.view'), channel_path(@channel), class: "btn" %></h3>
+      <h3>Go to channel: <%= link_to @channel.name, channel_path(@channel), class: "btn" %></h3>
     <% else %>
       <h3><%= button_to 'Join', channel_join_path(@channel), method: :post, data: { confirm: "Are you sure?" }, class: "btn btn--success" %></h3>
     <% end %>

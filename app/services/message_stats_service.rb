@@ -2,10 +2,8 @@
 
 class MessageStatsService
   def initialize
-    # @beginning_of_week = 1.week.ago.beginning_of_week.to_s
-    # @end_of_week = 1.week.ago.end_of_week.to_s
-    @beginning_of_week = 10.hours.ago.to_s
-    @end_of_week = 1.minutes.ago.to_s
+    @beginning_of_week = 1.week.ago.beginning_of_week.to_s
+    @end_of_week = 1.week.ago.end_of_week.to_s
   end
 
   def total_messages_sent(user_id)
