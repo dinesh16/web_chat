@@ -2,7 +2,6 @@
 
 class HomeController < ApplicationController
   def index
-    # binding.pry
     @channel = Channel.first
   end
 end

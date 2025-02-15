@@ -10,13 +10,14 @@
  */
 
 .custom-header {
-  background-color: #D3D3D3;
+  background-color: #7b7ea9;
   color: white;
   text-align: center;
-  padding: 20px;
+  padding: 10px;
   font-size: 24px;
   font-weight: bold;
   border-bottom: 5px solid #2C3E50;
+  border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -39,7 +40,8 @@
   max-width: 600px;
   padding: 10px 10px;
   margin: 20px auto;
-  background: #f9f9f9;
+  background: #eae9f5;
+  /* background: #008CBA; */
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   flex-direction: column;
@@ -80,4 +82,134 @@ textarea {
   padding: 1opx;
   border: 1px solid #ccc;
   border-radius: 4px;
+  height: 75px;
+}
+
+
+/* Custom button styles for Devise forms */
+.btn {
+  background-color: #5c60a3; 
+  color: white;              
+  padding: 12px 24px;        
+  border: none;             
+  border-radius: 4px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  font-size: 16px;          
+  cursor: pointer;          
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.btn:hover {
+  background-color: #5056a6; /* Darker green on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Focus effect (when clicked/focused) */
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Light shadow */
+}
+
+/* Disabled button style */
+.btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Style for login and signup buttons specifically */
+/* .btn-signup { */
+  /* background-color: #008CBA;  */
+/* } */
+
+/* .btn-signup:hover { */
+  /* background-color: #007B9A;  */
+/* } */
+
+/* General form styling */
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Input fields styling */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="submit"] {
+  width: 50%;
+  padding: 10px 10px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-size: 12px;
+  transition: border-color 0.3s ease;
+}
+
+/* Focus effect */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+/* Submit button styling */
+input[type="submit"] {
+  background-color: #5c60a3; 
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for submit button */
+input[type="submit"]:hover {
+  background-color: #5056a6;
+}
+
+/* Labels styling */
+label {
+  font-size: 14px;
+  color: #555;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Error message styling */
+div#error_explanation {
+  color: #ff4d4d;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+div#error_explanation ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+div#error_explanation ul li {
+  margin-bottom: 5px;
+}
+
+/* Add a little margin between each input field */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="submit"] {
+  margin-bottom: 15px;
+}
+
+/* Responsive styling for small screens */
+@media (max-width: 600px) {
+  .form-container {
+    padding: 15px;
+  }
 }

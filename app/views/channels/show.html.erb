@@ -1,7 +1,7 @@
 <% if current_user && current_user.channels.present? %>
-	<span><%= button_to 'Back', root_path, method: :get  %> </span>
+	<span><%= button_to 'Back', root_path, method: :get, class: "btn btn-primary"%> </span>
 
-  <h1><%= @channel.name%></h1>
+  <h1>#<%= @channel.name%></h1>
 
   <section class="messages">
     <%= turbo_stream_from "channel_#{@channel.id}" %>

@@ -2,9 +2,6 @@
 
 FactoryBot.define do
   factory :channel_user do
-    # chatroom
-    # user
-
     channel { create(:channel) }
     user { create(:user) }
   end

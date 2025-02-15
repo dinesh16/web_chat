@@ -20,12 +20,17 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
   </head>
 
   <body class="container">
 
     <header class="custom-header">
       <h1>Fonix Webchat</h1>
+      <% if current_user %>
+        <h4><%= current_user.email %></h4>
+        <h5><%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-primary" %></h5>
+      <% end %>
     </header><hr />
 
     <p class="notice"><%= notice %></p>

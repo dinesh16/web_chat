@@ -5,6 +5,7 @@ class Message < ApplicationRecord
   validates :content, presence: true
 
   after_create :broadcast_message
+  default_scope { order(created_at: :asc) }
 
   def broadcast_message
     broadcast_append_to(

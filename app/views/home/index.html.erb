@@ -1,20 +1,18 @@
-<%= turbo_stream_from current_user %>
-
 <% if current_user %>
-  <span class=""><%= button_to 'Logout', destroy_user_session_path, method: :delete %></span>
+  <div class=''>
+    <section>
+      <% if @channel.users.include? current_user %>
+        <h3>Go to channel: <%= link_to "##{@channel.name}", channel_path(@channel), class: "btn" %></h3>
+      <% else %>
+        <h3><%= button_to "Subscribe to Channel: ##{@channel.name}", channel_join_path(@channel), method: :post, data: { confirm: "Are you sure?" }, class: "btn btn--success" %></h3>
+      <% end %>
+
+    </section>
+  </div>
+  
 <% else %>
-  <%= link_to 'Login', new_user_session_path %>
-  <%= link_to 'Signup', new_user_registration_path %>
+  <h5><%= link_to 'Login', new_user_session_path, class: "btn btn-primary"%></h5>
+  <h5><%= link_to 'Signup', new_user_registration_path, class: "btn btn-primary"%></h5>
 <% end %>
 
 
-<div class=''>
-  <section>
-    <% if @channel.users.include? current_user %>
-      <h3>Go to channel: <%= link_to @channel.name, channel_path(@channel), class: "btn" %></h3>
-    <% else %>
-      <h3><%= button_to 'Join', channel_join_path(@channel), method: :post, data: { confirm: "Are you sure?" }, class: "btn btn--success" %></h3>
-    <% end %>
-
-  </section>
-</div>

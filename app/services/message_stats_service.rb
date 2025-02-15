@@ -2,34 +2,36 @@
 
 class MessageStatsService
   def initialize
-    @beginning_of_week = 1.week.ago.beginning_of_week.to_s
-    @end_of_week = 1.week.ago.end_of_week.to_s
+    week_ago = 1.week.ago
+    @beginning_of_week = week_ago.beginning_of_week
+    @end_of_week = week_ago.end_of_week
   end
 
   def total_messages_sent(user_id)
-    grouped_messages.select { |m| m['user_id'] == user_id }.sum { |m| m['message_count'] }
+    grouped_messages[user_id] || 0
   end
 
   def total_messages_received(user_id)
-    grouped_messages.reject { |m| m['user_id'] == user_id }.sum { |m| m['message_count'] }
+    grouped_messages.except(user_id).values.sum
   end
 
   def total_received_since_last_sent(user_id)
-    user_last_message = query.where('users.id = ?', user_id).order(created_at: :desc).first
-    other_messages = query.where('messages.created_at > ?', user_last_message.created_at).count
+    last_sent_message = query.where(users: { id: user_id }).last
+    last_sent_message ? query.where('messages.created_at > ?', last_sent_message.created_at).count : 0
   end
 
-  def user_last_message(user_id)
-    Message.joins(channel_user: [ :user, :channel ]).where('users.id = ?', user_id).order(created_at: :desc).first
-  end
+  private
 
   def query
     @query ||= Message.joins(channel_user: [ :user, :channel ])
   end
 
   def grouped_messages
-    @grouped_messages ||= query.where(created_at: @beginning_of_week..@end_of_week)
-                               .select('users.id AS user_id, COUNT(messages.id) AS message_count')
-                               .group('users.id').as_json
+    @grouped_messages ||= query
+      .where(messages: { created_at: @beginning_of_week..@end_of_week })
+      .unscope(:order)
+      .group('users.id')
+      .pluck('users.id', 'COUNT(messages.id)')
+      .to_h
   end
 end

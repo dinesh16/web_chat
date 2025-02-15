@@ -81,3 +81,10 @@ end
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 end
+
+Capybara.javascript_driver = :selenium_chrome
+
+
+# RSpec.configure do |config|
+#   config.include Devise::Test::ControllerHelpers, type: :controller
+# end
