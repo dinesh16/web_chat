@@ -10,4 +10,4 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-Channel.create!(name: 'General').reload
+Channel.find_or_create_by!(name: 'General').reload

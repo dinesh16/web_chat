@@ -2,6 +2,11 @@
 
 ## Fonix Webchat
 
+### Overview
+Fonix Webchat is a real-time messaging application built with Ruby on Rails. This prototype supports a single chat channel where all subscribed users can send and receive messages instantly via WebSockets (Action Cable).
+
+Additionally, the system provides a weekly email report to users, summarizing message activity.
+
 ### Requirements
 
 - The test must be done using Rails.
@@ -23,23 +28,25 @@ I.e.:
 600 messages have been exchanged in the last week. 750 since your last message on the 1st of February.
 ```
 
-## Setup
+### Setup
 
 ### Prerequisites
+Ensure the following dependencies are installed:
+
 - Ruby 3.3.5
-- Rails 8.0.1 with Solid Cable
+- Rails 8.0.1 (with Solid Cable)
 - PostgreSQL
 - Sidekiq
 
 
 ### Installation
-1. Clone the repository:
+1. Clone the Repository:
    ```
    git clone git@github.com:dinesh16/ss.git
-   cd project_conversation_history
+   cd webchat
    ```
 
-2. Install dependencies:
+2. Install Dependencies:
    ```
    bundle install
    ```
@@ -54,26 +61,31 @@ I.e.:
    bin/dev 
    ```
 
-Go to: `http://localhost:3000`
+Once running, access the application at:
+👉 `http://localhost:3000`
 
-## Testing
-To run the test suite:
+### Testing
+Run the test suite using:
 ```
-rspec
+rails db:test:prepare
+rspec 
+```
+Testing mail service: Go to rails console and run
+
+```
+WeeklySummaryJob.perform_later
 ```
 
-### Notes
+#### Notes & Future Improvements
+🔧 Potential Enhancements
+- Improve test coverage by adding feature tests
+- Enhance the user interface with improved CSS and UI components.
+- Refine views and helper methods for better maintainability.
 
-#### Things I would improve:
-- Add more specs
-- Add bit more css
-- Better views, helpers
 
-#### Notes
-
-This application is currently configured with a single channel, but additional channels can be created as needed.
-
-It leverages Hotwire with Rails 8 Solid Cable, eliminating the need for Redis. Instead, Solid Cable utilizes SQLite for data storage, and messages are transmitted via WebSockets.
-
-A cron job has been set up to send weekly message statistics emails to each user, as per the requirements.
-
+### Additional Information
+- It utilizes Devise for user registration and login.
+- The application currently supports a single chat channel, but additional channels can be introduced as needed.
+- It utilizes Solid Cable: A database-backed WebSocket implementation, removing the requirement for Redis in real-time features
+- SQLite is used for Data storage, and messages are delivered using WebSockets.
+- A Cron Job automates the weekly email reports for user message statistics.

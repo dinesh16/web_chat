@@ -4,9 +4,8 @@
       <% if @channel.users.include? current_user %>
         <h3>Go to channel: <%= link_to "##{@channel.name}", channel_path(@channel), class: "btn" %></h3>
       <% else %>
-        <h3><%= button_to "Subscribe to Channel: ##{@channel.name}", channel_join_path(@channel), method: :post, data: { confirm: "Are you sure?" }, class: "btn btn--success" %></h3>
+        <h3><%= button_to "Subscribe to Channel: ##{@channel.name}", channel_join_path(@channel), method: :post, class: "btn" %></h3>
       <% end %>
-
     </section>
   </div>
   
